@@ -7,4 +7,11 @@ public class Bloque {
         this.espacio = espacio;
         this.disponibilidad = disponibilidad;
     }
+    public String getEspacio() {
+        return espacio;
+    }
+
+    public boolean getDisponibilidad() {
+        return disponibilidad;
+    }
 }

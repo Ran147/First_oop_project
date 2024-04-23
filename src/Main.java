@@ -33,8 +33,9 @@ public class Main {
         GlobalResources.addAula(new Aula_Practica("Laboratorio Electrónica", 205, 15, "Edificio F", 10, "Osciloscopios"));
         GlobalResources.addAula(new Aula_Practica("Laboratorio Química", 206, 20, "Edificio G", 20, "Material Químico"));
         //Estudiantes---------------------------------------------------------------
-        Estudiante estudiante1 = new Estudiante("Mathew",229392);
-        Estudiante estudiante2 = new Estudiante("Tinkyweed",11292);
+        Estudiantado listasE = new Estudiantado();
+        listasE.anadir_Estudiantes("Mathew",229392);
+        listasE.anadir_Estudiantes("Tinkyweed",11292);
 
 
 
