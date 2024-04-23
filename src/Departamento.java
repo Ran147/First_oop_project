@@ -4,4 +4,8 @@ public class Departamento {
     public Departamento(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
 }

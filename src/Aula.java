@@ -10,4 +10,17 @@ public class Aula {
         this.capacidad = capacidad;
         this.ubicacion = ubicacion;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getNumero_aula() {
+        return numero_aula;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
 }

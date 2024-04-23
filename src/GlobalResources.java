@@ -1,8 +1,10 @@
 import java.util.LinkedList;
 
 public class GlobalResources {
-    private static LinkedList<Asignatura> listaAsignaturas = new LinkedList<>();
-    private static LinkedList<Aula> listaAulas = new LinkedList<>();
+    private static LinkedList<Asignatura> listaAsignaturas;
+    private static LinkedList<Aula> listaAulas;
+
+
 
     public static void addAsignatura(Asignatura asignatura) {
         listaAsignaturas.add(asignatura);

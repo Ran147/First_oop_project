@@ -15,4 +15,8 @@ public class Profesor extends Persona{
     void escoger_Asignatura(Asignatura asig){
         asignatura.add(asig);
     }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
 }

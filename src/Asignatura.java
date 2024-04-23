@@ -15,4 +15,12 @@ public class Asignatura {
         horas_semana = horas * creditos;
         return horas_semana;
     }
+
+    public String getNombre_asig() {
+        return nombre_asig;
+    }
+
+    public int getCreditos() {
+        return creditos;
+    }
 }

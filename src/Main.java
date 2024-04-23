@@ -1,12 +1,17 @@
+import java.util.List;
+import java.util.Scanner;
+import java.util.LinkedList;
 public class Main {
+    private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
+
         //Departamentos---------------------------------------------
         Departamento departamento = new Departamento("Ingenieria en computacion");
         Departamento departamento1 = new Departamento("Escuela de matematicas");
         //Unico coordinador----------------------------------------------------
-        Coordinador coordinador = new Coordinador("Efren",20393983,departamento);
+        Coordinador coordinador = new Coordinador("Efren", 20393983, departamento);
         //Profesores----------------------------------------------------------
-        coordinador.addProfesor("Randy", 504470537,departamento);
+        coordinador.addProfesor("Randy", 504470537, departamento);
         coordinador.addProfesor("Alicia", 504470538, departamento1);
         coordinador.addProfesor("Carlos", 504470539, departamento);
         coordinador.addProfesor("Maria", 504470540, departamento);
@@ -34,15 +39,8 @@ public class Main {
         GlobalResources.addAula(new Aula_Practica("Laboratorio Química", 206, 20, "Edificio G", 20, "Material Químico"));
         //Estudiantes---------------------------------------------------------------
         Estudiantado listasE = new Estudiantado();
-        listasE.anadir_Estudiantes("Mathew",229392);
-        listasE.anadir_Estudiantes("Tinkyweed",11292);
-
-
-
-
-
-
-
+        listasE.anadir_Estudiantes("Mathew", 229392);
+        listasE.anadir_Estudiantes("Tinkyweed", 11292);
 
     }
 }
