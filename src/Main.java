@@ -41,6 +41,7 @@ public class Main {
         Estudiantado listasE = new Estudiantado();
         listasE.anadir_Estudiantes("Mathew", 229392);
         listasE.anadir_Estudiantes("Tinkyweed", 11292);
+        Menu.displaymenu(coordinador,listasE);
 
     }
 }

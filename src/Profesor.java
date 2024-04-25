@@ -23,6 +23,22 @@ public class Profesor extends Persona{
             }
         }
     }
+    public void search_block(String day, String time, Asignatura curso){
+        for(Dia dia: horario_prof.getDias()){
+            if(dia.getNombre_dia().equals(day)){
+                for(Bloque bloque: dia.getBloques()){
+                    if(bloque.getEspacio().equals(time)&& bloque.getDisponibilidad()){
+                        bloque.setDisponibilidad(false);
+                        bloque.setCurso(curso);
+                    }
+                    System.out.println("Error, no se puede escribir en ese lugar");
+                    break;
+                }
+                break;
+            }
+        }
+        System.out.println("No se encuentra el dia");
+    }
 
     public Departamento getDepartamento() {
         return departamento;

@@ -15,4 +15,16 @@ public class Bloque {
     public boolean getDisponibilidad() {
         return disponibilidad;
     }
+
+    public void setEspacio(String espacio) {
+        this.espacio = espacio;
+    }
+
+    public void setDisponibilidad(boolean disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
+
+    public void setCurso(Asignatura curso) {
+        this.curso = curso;
+    }
 }
