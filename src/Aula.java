@@ -23,4 +23,7 @@ public class Aula {
         return capacidad;
     }
 
+    public String getUbicacion() {
+        return ubicacion;
+    }
 }

@@ -20,4 +20,13 @@ public class Horario {
     public LinkedList<Dia> getDias() {
         return dias;
     }
+    public void printHorario() {
+        System.out.println("Horario: " + nombre_horario);
+        for (Dia dia : dias) {
+            System.out.println("Día: " + dia.getNombre_dia());
+            for (Bloque bloque : dia.getBloques()) {
+                System.out.println("  - Espacio: " + bloque.getEspacio() + " - Disponibilidad: " + (bloque.getDisponibilidad() ? "Disponible" : "No disponible"));
+            }
+        }
+    }
 }

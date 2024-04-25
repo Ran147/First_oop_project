@@ -2,6 +2,7 @@ public class Bloque {
     private String espacio;
     private boolean disponibilidad;
     private Aula aula;
+    private Asignatura curso;
 
     public Bloque(String espacio, boolean disponibilidad) {
         this.espacio = espacio;

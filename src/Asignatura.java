@@ -23,4 +23,8 @@ public class Asignatura {
     public int getCreditos() {
         return creditos;
     }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
 }
