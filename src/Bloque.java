@@ -24,6 +24,10 @@ public class Bloque {
         this.disponibilidad = disponibilidad;
     }
 
+    public Asignatura getCurso() {
+        return curso;
+    }
+
     public void setCurso(Asignatura curso) {
         this.curso = curso;
     }

@@ -4,7 +4,7 @@ public class Estudiantado {
     private LinkedList<Estudiante> lista_estudiantes;
 
     public Estudiantado() {
-        this.lista_estudiantes = lista_estudiantes;
+        this.lista_estudiantes = new LinkedList<>();
     }
     void anadir_Estudiantes(String nombre, int cedula){
         lista_estudiantes.add(new Estudiante(nombre, cedula));

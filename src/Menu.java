@@ -5,7 +5,7 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         while(true){
             // Display the menu options
-            System.out.println("Mini Menu:");
+            System.out.println("MENU PRINCIPAL:");
             System.out.println("1. Professor log in");
             System.out.println("2. Coordinator log in");
             System.out.println("3. Student log in");
@@ -14,6 +14,7 @@ public class Menu {
             // Prompt the user to choose an option
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline character
             switch (choice){
                 case 1:
 

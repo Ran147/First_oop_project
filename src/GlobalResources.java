@@ -12,10 +12,12 @@ public class GlobalResources {
         listaAulas.add(aula);
     }
 
-    public static void printListaAsignaturas() {
+    public static void printListaAsignaturas(Departamento departamento) {
         System.out.println("Lista de Asignaturas:");
         for (Asignatura asignatura : listaAsignaturas) {
-            System.out.println("Nombre: " + asignatura.getNombre_asig() + ", Créditos: " + asignatura.getCreditos() + ", Departamento: " + asignatura.getDepartamento().getNombre());
+            if (asignatura.getDepartamento().equals(departamento)) {
+                System.out.println("Nombre: " + asignatura.getNombre_asig() + ", Créditos: " + asignatura.getCreditos() + ", Departamento: " + asignatura.getDepartamento().getNombre());
+            }
         }
     }
 

@@ -25,8 +25,15 @@ public class Horario {
         for (Dia dia : dias) {
             System.out.println("Día: " + dia.getNombre_dia());
             for (Bloque bloque : dia.getBloques()) {
-                System.out.println("  - Espacio: " + bloque.getEspacio() + " - Disponibilidad: " + (bloque.getDisponibilidad() ? "Disponible" : "No disponible"));
+                System.out.print("  - Espacio: " + bloque.getEspacio());
+                System.out.print(" - Disponibilidad: " + (bloque.getDisponibilidad() ? "Disponible" : "No disponible"));
+                if (bloque.getCurso() != null) {
+                    System.out.println(" - Curso: " + bloque.getCurso().getNombre_asig());
+                } else {
+                    System.out.println();
+                }
             }
         }
     }
+
 }
