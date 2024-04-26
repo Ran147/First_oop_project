@@ -3,10 +3,12 @@ import java.util.LinkedList;
 public class Dia {
     private String nombra_dia;
     private LinkedList<Bloque> bloques;
+    private LinkedList<Asignatura> cursitos;
 
     public Dia(String nombra_dia) {
         this.nombra_dia = nombra_dia;
         this.bloques = new LinkedList<>();
+        this.cursitos = new LinkedList<>();
         inicializarbloques();
     }
     void inicializarbloques(){
@@ -39,5 +41,12 @@ public class Dia {
 
     public LinkedList<Bloque> getBloques() {
         return bloques;
+    }
+
+    public LinkedList<Asignatura> getCursitos() {
+        return cursitos;
+    }
+    public void addcurso(Asignatura asig){
+        cursitos.add(asig);
     }
 }

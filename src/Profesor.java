@@ -23,24 +23,22 @@ public class Profesor extends Persona{
             }
         }
     }
-    public void search_block(String day, String time, Asignatura curso) {
+    public void search_block(String day, Asignatura curso) {
+        boolean dayFound = false; // Flag to check if the day was found
+
         for (Dia dia : horario_prof.getDias()) {
             if (dia.getNombre_dia().equals(day)) {
-                for (Bloque bloque : dia.getBloques()) {
-                    if (bloque.getEspacio().equals(time) && bloque.getDisponibilidad()) {
-                        bloque.setDisponibilidad(false);
-                        bloque.setCurso(curso);
-                        return; // Exit the method after setting the block
-                    }
-                }
-                // If control reaches here, it means the time slot was not found
-                System.out.println("Error, no se puede escribir en ese lugar");
-                return; // Exit the method after printing the error message
+                dia.addcurso(curso); // Ensure this method exists and works as expected
+                dayFound = true;
+                break; // Stop searching once the correct day is found
             }
         }
-        // If control reaches here, it means the day was not found
-        System.out.println("No se encuentra el dia");
+
+        if (!dayFound) {
+            System.out.println("No se encuentra el dia"); // Only print if no day matched
+        }
     }
+
     public Asignatura search_course(String nombre){
         for(Asignatura i:lista_asignatura){
             if(i.getNombre_asig().equals(nombre)){

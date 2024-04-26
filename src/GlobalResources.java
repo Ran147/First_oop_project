@@ -16,7 +16,7 @@ public class GlobalResources {
         System.out.println("Lista de Asignaturas:");
         for (Asignatura asignatura : listaAsignaturas) {
             if (asignatura.getDepartamento().equals(departamento)) {
-                System.out.println("Nombre: " + asignatura.getNombre_asig() + ", Créditos: " + asignatura.getCreditos() + ", Departamento: " + asignatura.getDepartamento().getNombre());
+                System.out.println("Nombre: " + asignatura.getNombre_asig() + ", Créditos: " + asignatura.getCreditos() + ", Departamento: " + asignatura.getDepartamento().getNombre()+ ", Semestre: "+asignatura.getSemestre());
             }
         }
     }

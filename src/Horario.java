@@ -35,5 +35,21 @@ public class Horario {
             }
         }
     }
+    public void printHorarioSimplificado() {
+        System.out.println("Horario: " + nombre_horario);
+        for (Dia dia : dias) {
+            System.out.print("Día: " + dia.getNombre_dia());
+            LinkedList<Asignatura> cursos = dia.getCursitos();  // Assuming Dia class has this method
+            if (cursos.isEmpty()) {
+                System.out.println(" - No hay cursos asignados");
+            } else {
+                System.out.println(" - Cursos: ");
+                for(Asignatura curso:cursos){
+                    System.out.println("--Nombre: "+curso.getNombre_asig()+"--Semestre: "+curso.getSemestre());
+                }
+            }
+        }
+    }
+
 
 }

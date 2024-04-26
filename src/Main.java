@@ -22,13 +22,13 @@ public class Main {
         coordinador.addProfesor("Ricardo", 504470545, departamento);
         coordinador.addProfesor("Elena", 504470546, departamento);
         //Cursos-----------------------------------------------------------------
-        GlobalResources.addAsignatura(new Asignatura_Teorica("Matemáticas Discretas", 3, departamento1, "Online"));
-        GlobalResources.addAsignatura(new Asignatura_Practica("Programación", 4, departamento, "Libros", "Windows"));
-        GlobalResources.addAsignatura(new Asignatura_Teorica("Algebra Lineal", 3, departamento1, "Sala de conferencias"));
-        GlobalResources.addAsignatura(new Asignatura_Teorica("Calculo Diferencial", 3, departamento1, "Online"));
-        GlobalResources.addAsignatura(new Asignatura_Teorica("Estadística", 2, departamento1, "Aula 203"));
-        GlobalResources.addAsignatura(new Asignatura_Practica("Redes", 4, departamento, "Routers y Switches", "Linux"));
-        GlobalResources.addAsignatura(new Asignatura_Practica("Base de Datos", 3, departamento, "SQL Servers", "Windows"));
+        GlobalResources.addAsignatura(new Asignatura_Teorica("Matemáticas Discretas", 3, departamento1, 1,"Online"));
+        GlobalResources.addAsignatura(new Asignatura_Practica("Programación", 4, departamento, 1,"Libros", "Windows"));
+        GlobalResources.addAsignatura(new Asignatura_Teorica("Algebra Lineal", 3, departamento1, 3,"tec digital"));
+        GlobalResources.addAsignatura(new Asignatura_Teorica("Calculo Diferencial", 3, departamento1, 2,"Online"));
+        GlobalResources.addAsignatura(new Asignatura_Teorica("Estadística", 2, departamento1, 4,"tec digital"));
+        GlobalResources.addAsignatura(new Asignatura_Practica("Redes", 4, departamento, 6,"Routers y Switches", "Linux"));
+        GlobalResources.addAsignatura(new Asignatura_Practica("Base de Datos", 3, departamento, 3,"SQL Servers", "Windows"));
         //Aulas--------------------------------------------------------------------
         GlobalResources.addAula(new Aula_Teorica("Aula 101", 101, 30, "Edificio A", true, true));
         GlobalResources.addAula(new Aula_Practica("Laboratorio Comp", 102, 20, "Edificio B", 15, "PCs"));
