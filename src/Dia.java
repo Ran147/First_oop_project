@@ -35,7 +35,7 @@ public class Dia {
             System.out.println(bloque.getEspacio() + " - Disponible: " + (bloque.getDisponibilidad() ? "Sí" : "No"));
         }
     }
-    public boolean anadir_cursos_dia(Dia dia, Asignatura asig,String profe,LinkedList<Aula> aulas, LinkedList<Horario> horario){
+    public boolean anadir_cursos_dia(Dia dia, Asignatura asig,String profe,LinkedList<Aula> aulas, Coordinador coordinador){
         //agregar lo de disponibilidad del aula
         int horas = asig.cantidad_horas();
         boolean bandera = false;
@@ -48,11 +48,13 @@ public class Dia {
                 for(Aula aula:aulas) {
                     //ya se puede hacer la validacion con la funcion de horario,
                     //solo es de llamarla aca abajo
-                    if (aula.getNumero_aula() == bloque.getAula().getNumero_aula()) {
+                    if (coordinador.revision_similitud(coordinador.getHorario_semestre(),horas,envio)) {
                         if (asig instanceof Asignatura_Practica && aula instanceof Aula_Practica) {
                             // Add the course to the current block
                             bloque.setCurso(asig);
                             bloque.setDisponibilidad(false);
+                            aula.setDisponibilidad(false);
+                            bloque.setAula(aula);
                             bloque.setProfe(profe);
                             horas--;
 
@@ -60,6 +62,8 @@ public class Dia {
                             // Add the course to the current block
                             bloque.setCurso(asig);
                             bloque.setDisponibilidad(false);
+                            aula.setDisponibilidad(false);
+                            bloque.setAula(aula);
                             bloque.setProfe(profe);
                             horas--;
 
@@ -73,7 +77,8 @@ public class Dia {
             }
 
         }
-        return bandera = true;
+
+        return bandera;
 
     }
     public LinkedList<String> verificar(int hora, Dia dias,LinkedList<Aula> aulas, Asignatura asig ){

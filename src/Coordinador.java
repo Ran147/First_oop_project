@@ -1,5 +1,6 @@
 import javax.lang.model.type.NullType;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class Coordinador extends Persona {
     private Departamento departamento;
@@ -54,19 +55,20 @@ public class Coordinador extends Persona {
         }
 
     }
-    public void acomodar_horario(String nombre_dia,LinkedList<Asignatura> cursos,Profesor profe){
+    public void acomodar_horario(String nombre_dia,LinkedList<Asignatura> cursos,Profesor profe, Coordinador coordinador){
         for(Asignatura curso:cursos){
-            if(horario_semestre.isEmpty()){
+            if(coordinador.getHorario_semestre().isEmpty()){
                 Horario horarioS = new Horario(profe.getNombre(), curso.getSemestre());
-                horario_semestre.add(horarioS);
+                coordinador.getHorario_semestre().add(horarioS);
             }
             else {
                 boolean banderita = false;
-                for (Horario horario : horario_semestre) {
+                for (Horario horario : coordinador.getHorario_semestre()) {
                     if (curso.getSemestre() == horario.getSemestre()) {
                         banderita = true;
                         for(Dia dia : horario.getDias()){
                             if(dia.getNombre_dia().equals(nombre_dia)){
+                                dia.anadir_cursos_dia(dia,curso, profe.getNombre(),GlobalResources.getListaAulas(),coordinador);
 
                             }
                         }
@@ -82,6 +84,47 @@ public class Coordinador extends Persona {
             }
         }
     }
+    public boolean revision_similitud(LinkedList<Horario> horarios, int horas, LinkedList<String> espacios) {
+        int horas_globales = horas;
+        boolean bandero = false;
+        for (Horario horario : horarios) {
+            for (Dia dia : horario.getDias()) {
+                ListIterator<Bloque> iterator = dia.getBloques().listIterator();
+                while (iterator.hasNext() && horas_globales > 0) {
+                    Bloque bloque = iterator.next();
+                    if (espacios.contains(bloque.getEspacio())) {
+                        if (bloque.getAula().getDisponibilidad()) {
+                            bandero = true;
+                            horas_globales--;
+                        }
+                        else{
+                            bandero = false;
+                            horas_globales--;
+
+                        }
+
+                    }
+
+
+                }
+            }
+
+        }
+        return bandero;
+    }
+    public void ver_horario(){
+        if(horario_semestre.isEmpty()){
+            System.out.println("Vacio");
+        }
+        for(Horario horario:horario_semestre){
+            System.out.println("prs1");
+            System.out.println("Horario semestre: "+horario.getSemestre());
+            System.out.println("------------------------------------------");
+            System.out.println("prs2");
+            horario.printHorario();
+        }
+
+    }
 
 
     public LinkedList<Profesor> getListaProfesores() {
@@ -94,6 +137,10 @@ public class Coordinador extends Persona {
 
     public LinkedList<Profesor> getListaprofesoresS2() {
         return listaprofesoresS2;
+    }
+
+    public LinkedList<Horario> getHorario_semestre() {
+        return horario_semestre;
     }
 }
 

@@ -31,12 +31,12 @@ public class Main {
         GlobalResources.addAsignatura(new Asignatura_Practica("Base de Datos", 3, departamento, 3,"SQL Servers", "Windows"));
         //Aulas--------------------------------------------------------------------
         GlobalResources.addAula(new Aula_Teorica("Aula 101", 101, 30, "Edificio A", true, true));
-        GlobalResources.addAula(new Aula_Practica("Laboratorio Comp", 102, 20, "Edificio B", 15, "PCs"));
+        GlobalResources.addAula(new Aula_Practica("Laboratorio 12", 12, 20, "Edificio B", 15, "PCs"));
         GlobalResources.addAula(new Aula_Teorica("Aula 202", 202, 25, "Edificio C", true, false));
         GlobalResources.addAula(new Aula_Teorica("Aula 303", 303, 50, "Edificio D", false, true));
         GlobalResources.addAula(new Aula_Teorica("Aula 404", 404, 40, "Edificio E", true, true));
-        GlobalResources.addAula(new Aula_Practica("Laboratorio Electrónica", 205, 15, "Edificio F", 10, "Osciloscopios"));
-        GlobalResources.addAula(new Aula_Practica("Laboratorio Química", 206, 20, "Edificio G", 20, "Material Químico"));
+        GlobalResources.addAula(new Aula_Practica("Laboratorio 10", 10, 15, "Edificio F", 10, "Computacion"));
+        GlobalResources.addAula(new Aula_Practica("Laboratorio 22", 22, 20, "Edificio G", 20, "Computacion"));
         //Estudiantes---------------------------------------------------------------
         Estudiantado listasE = new Estudiantado();
         listasE.anadir_Estudiantes("Mathew", 229392);

@@ -18,30 +18,24 @@ public class Submenu_two {
                     int semestre_numero = scanner.nextInt();
                     scanner.nextLine();
                     coordinador.encontrarprofesor_semestre(semestre_numero);
-                    if(semestre_numero==1){
-
-                        for(Profesor profesor:coordinador.getListaprofesoresS1()){
-                            for(Dia dia : profesor.getHorario_prof().getDias()){
-                                if(!dia.getCursitos().isEmpty()) {
-                                    String nombre_dia = dia.getNombre_dia();
-                                    LinkedList<Asignatura> cursos_del_dia = dia.getCursitos();
-                                    Profesor profesor_del_dia = profesor;
+                    for(Profesor profesor:coordinador.getListaprofesoresS1()){
+                        for(Dia dia : profesor.getHorario_prof().getDias()){
+                            if(!dia.getCursitos().isEmpty()) {
+                                String nombre_dia = dia.getNombre_dia();
+                                LinkedList<Asignatura> cursos_del_dia = dia.getCursitos();
+                                Profesor profesor_del_dia = profesor;
+                                coordinador.acomodar_horario(nombre_dia,cursos_del_dia,profesor_del_dia, coordinador);
 
                                 }
 
                             }
                         }
-
-                    }
-                    else{
-
-                    }
-
                     //ya tendria divididos los profesores que dan cursos de semestre 1 y 2 pero tiene que ser en pares e impares
-
                     break;
                 case 2:
-                    System.out.println("Choose the day where you'll teach: ");
+                    System.out.println("Buscando semestres.... ");
+                    coordinador.ver_horario();
+                    System.out.println("Prueba");
                     break;
                 case 3:
                     System.out.println("Saliendo....");

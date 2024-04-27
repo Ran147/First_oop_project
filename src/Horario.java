@@ -53,34 +53,7 @@ public class Horario {
             }
         }
     }
-    public boolean revision_similitud(LinkedList<Horario> horarios, int horas, int numero_aula, LinkedList<String> espacios) {
-        int horas_globales = horas;
-        boolean bandero = false;
-        for (Horario horario : horarios) {
-            for (Dia dia : horario.getDias()) {
-                ListIterator<Bloque> iterator = dia.getBloques().listIterator();
-                while (iterator.hasNext() && horas_globales > 0) {
-                    Bloque bloque = iterator.next();
-                    if (espacios.contains(bloque.getEspacio())) {
-                        if (bloque.getAula().getDisponibilidad()) {
-                            bandero = true;
-                            horas_globales--;
-                        }
-                        else{
-                            bandero = false;
-                            horas_globales--;
 
-                        }
-
-                    }
-
-
-                }
-            }
-
-        }
-        return bandero;
-    }
 
     public int getSemestre() {
         return semestre;

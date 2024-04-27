@@ -48,6 +48,10 @@ public class Bloque {
     public Aula getAula() {
         return aula;
     }
+
+    public String getProfe() {
+        return profe;
+    }
 }
 
 
