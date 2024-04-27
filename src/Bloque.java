@@ -1,3 +1,5 @@
+import java.util.ListIterator;
+
 public class Bloque {
     private String espacio;
     private boolean disponibilidad;
@@ -10,6 +12,7 @@ public class Bloque {
         this.disponibilidad = disponibilidad;
         this.profe = profe;
     }
+
     public String getEspacio() {
         return espacio;
     }
@@ -41,4 +44,10 @@ public class Bloque {
     public void setProfe(String profe) {
         this.profe = profe;
     }
+
+    public Aula getAula() {
+        return aula;
+    }
 }
+
+

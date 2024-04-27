@@ -35,15 +35,20 @@ public class Dia {
             System.out.println(bloque.getEspacio() + " - Disponible: " + (bloque.getDisponibilidad() ? "Sí" : "No"));
         }
     }
-    public void anadir_cursos_dia(Dia dia, Asignatura asig,String profe,LinkedList<Aula> aulas){
+    public boolean anadir_cursos_dia(Dia dia, Asignatura asig,String profe,LinkedList<Aula> aulas, LinkedList<Horario> horario){
+        //agregar lo de disponibilidad del aula
         int horas = asig.cantidad_horas();
+        boolean bandera = false;
+        LinkedList<String> envio = verificar(horas,dia,aulas,asig);
         ListIterator<Bloque> iterator = dia.getBloques().listIterator();
-
+        Bloque blockfinal = dia.getBloques().getLast();
         while (iterator.hasNext() && horas > 0) {
             Bloque bloque = iterator.next();
             if(bloque.getDisponibilidad()){
                 for(Aula aula:aulas) {
-                    if (aula.getDisponibilidad()) {
+                    //ya se puede hacer la validacion con la funcion de horario,
+                    //solo es de llamarla aca abajo
+                    if (aula.getNumero_aula() == bloque.getAula().getNumero_aula()) {
                         if (asig instanceof Asignatura_Practica && aula instanceof Aula_Practica) {
                             // Add the course to the current block
                             bloque.setCurso(asig);
@@ -62,9 +67,41 @@ public class Dia {
                     }
 
                 }
+            } else if (blockfinal.getEspacio().equals(bloque.getEspacio())&& !blockfinal.getDisponibilidad()) {
+                return false;
+
             }
 
         }
+        return bandera = true;
+
+    }
+    public LinkedList<String> verificar(int hora, Dia dias,LinkedList<Aula> aulas, Asignatura asig ){
+        int horas = hora;
+        LinkedList<String> retorno = new LinkedList<>();
+        ListIterator<Bloque> iterator = dias.getBloques().listIterator();
+        while (iterator.hasNext() && horas > 0) {
+            Bloque bloque = iterator.next();
+            if(bloque.getDisponibilidad()){
+                for(Aula aula:aulas){
+                    if (asig instanceof Asignatura_Practica && aula instanceof Aula_Practica) {
+                        retorno.add(bloque.getEspacio());
+                        horas--;
+
+                    } else if (asig instanceof Asignatura_Teorica && aula instanceof Aula_Teorica) {
+                        retorno.add(bloque.getEspacio());
+                        horas--;
+
+                    }
+
+                }
+            }
+
+
+
+        }
+        return retorno;
+
 
     }
 

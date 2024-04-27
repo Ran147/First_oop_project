@@ -3,7 +3,8 @@ public class Aula {
     private int numero_aula;
     private int capacidad;
     private String ubicacion;
-    private Boolean disponibilidad = false;
+    private Departamento departamento;
+    private Boolean disponibilidad = true;
 
     public Aula(String nombre, int numero_aula, int capacidad, String ubicacion) {
         this.nombre = nombre;
@@ -11,6 +12,7 @@ public class Aula {
         this.capacidad = capacidad;
         this.ubicacion = ubicacion;
         this.disponibilidad = disponibilidad;
+        this.departamento = departamento;
     }
 
     public String getNombre() {
@@ -35,5 +37,13 @@ public class Aula {
 
     public void setDisponibilidad(Boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 }
