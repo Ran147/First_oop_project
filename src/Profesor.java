@@ -10,7 +10,7 @@ public class Profesor extends Persona{
         super(nombre, cedula);
         this.departamento = departamento;
         this.lista_asignatura = new LinkedList<>();
-        this.horario_prof = new Horario("Horario-"+nombre);
+        this.horario_prof = new Horario("Horario-"+nombre,0);
     }
     public void escoger_Asignatura(LinkedList<String> lista){
         for(String nombre:lista){
@@ -54,5 +54,9 @@ public class Profesor extends Persona{
 
     public Horario getHorario_prof() {
         return horario_prof;
+    }
+
+    public LinkedList<Asignatura> getLista_asignatura() {
+        return lista_asignatura;
     }
 }

@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class Dia {
     private String nombra_dia;
@@ -34,6 +35,38 @@ public class Dia {
             System.out.println(bloque.getEspacio() + " - Disponible: " + (bloque.getDisponibilidad() ? "Sí" : "No"));
         }
     }
+    public void anadir_cursos_dia(Dia dia, Asignatura asig,String profe,LinkedList<Aula> aulas){
+        int horas = asig.cantidad_horas();
+        ListIterator<Bloque> iterator = dia.getBloques().listIterator();
+
+        while (iterator.hasNext() && horas > 0) {
+            Bloque bloque = iterator.next();
+            if(bloque.getDisponibilidad()){
+                for(Aula aula:aulas) {
+                    if (aula.getDisponibilidad()) {
+                        if (asig instanceof Asignatura_Practica && aula instanceof Aula_Practica) {
+                            // Add the course to the current block
+                            bloque.setCurso(asig);
+                            bloque.setDisponibilidad(false);
+                            bloque.setProfe(profe);
+                            horas--;
+
+                        } else if (asig instanceof Asignatura_Teorica && aula instanceof Aula_Teorica) {
+                            // Add the course to the current block
+                            bloque.setCurso(asig);
+                            bloque.setDisponibilidad(false);
+                            bloque.setProfe(profe);
+                            horas--;
+
+                        }
+                    }
+
+                }
+            }
+
+        }
+
+    }
 
     public String getNombre_dia() {
         return nombra_dia;
@@ -42,6 +75,7 @@ public class Dia {
     public LinkedList<Bloque> getBloques() {
         return bloques;
     }
+
 
     public LinkedList<Asignatura> getCursitos() {
         return cursitos;

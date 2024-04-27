@@ -30,6 +30,7 @@ public class Menu {
                     break;
                 case 2:
                     System.out.println("Redirecting to coordinator hub");
+                    Submenu_two.displaysubmenu_two(coordinador);
                     //code
                     break;
                 case 3:

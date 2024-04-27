@@ -3,10 +3,12 @@ public class Bloque {
     private boolean disponibilidad;
     private Aula aula;
     private Asignatura curso;
+    private String profe;
 
     public Bloque(String espacio, boolean disponibilidad) {
         this.espacio = espacio;
         this.disponibilidad = disponibilidad;
+        this.profe = profe;
     }
     public String getEspacio() {
         return espacio;
@@ -30,5 +32,13 @@ public class Bloque {
 
     public void setCurso(Asignatura curso) {
         this.curso = curso;
+    }
+
+    public void setAula(Aula aula) {
+        this.aula = aula;
+    }
+
+    public void setProfe(String profe) {
+        this.profe = profe;
     }
 }

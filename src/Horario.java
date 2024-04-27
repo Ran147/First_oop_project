@@ -3,10 +3,12 @@ import java.util.LinkedList;
 public class Horario {
     private String nombre_horario;
     private LinkedList<Dia> dias;
+    private int semestre;
 
-    public Horario(String nombre_horario) {
+    public Horario(String nombre_horario,int semestre) {
         this.nombre_horario = nombre_horario;
         this.dias = new LinkedList<>();
+        this.semestre = semestre;
         inicializardia();
     }
     void inicializardia(){
@@ -51,5 +53,7 @@ public class Horario {
         }
     }
 
-
+    public int getSemestre() {
+        return semestre;
+    }
 }
