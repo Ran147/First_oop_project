@@ -18,7 +18,7 @@ public class Submenu_two {
                     int semestre_numero = scanner.nextInt();
                     scanner.nextLine();
                     coordinador.encontrarprofesor_semestre(semestre_numero);
-                    for(Profesor profesor:coordinador.getListaprofesoresS1()){
+                    for(Profesor profesor:coordinador.getListaprofesoresS2()){ //numero de semestre
                         for(Dia dia : profesor.getHorario_prof().getDias()){
                             if(!dia.getCursitos().isEmpty()) {
                                 String nombre_dia = dia.getNombre_dia();

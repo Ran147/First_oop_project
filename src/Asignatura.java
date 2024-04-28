@@ -12,11 +12,15 @@ public class Asignatura {
     }
 
     public int cantidad_horas(){
-        int horas = 3;
-        int horas_semana;
-        horas_semana = horas * creditos;
-        return horas_semana;
+        if(creditos==4 || creditos ==3){
+            return 15;
+        } else if (creditos<3) {
+            return 8;
+
+        }
+        return 0;
     }
+
 
     public String getNombre_asig() {
         return nombre_asig;

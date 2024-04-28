@@ -55,15 +55,29 @@ public class Coordinador extends Persona {
         }
 
     }
+    //aqui esta el problema, aqui es donde se genera el horario base
+    //Es como si no se generara ningun horario
+    //Debuggear
     public void acomodar_horario(String nombre_dia,LinkedList<Asignatura> cursos,Profesor profe, Coordinador coordinador){
         for(Asignatura curso:cursos){
-            if(coordinador.getHorario_semestre().isEmpty()){
+            if(horario_semestre.isEmpty()){
                 Horario horarioS = new Horario(profe.getNombre(), curso.getSemestre());
-                coordinador.getHorario_semestre().add(horarioS);
+                horario_semestre.add(horarioS);
+                for(Horario h:horario_semestre){
+                    if(curso.getSemestre()==h.getSemestre()){
+                        for(Dia d:h.getDias()){
+                            if(d.getNombre_dia().equals(nombre_dia)){
+                                d.anadir_cursos_dia(d,curso, profe.getNombre(),GlobalResources.getListaAulas(),coordinador);
+
+                            }
+                        }
+                    }
+                }
+
             }
             else {
                 boolean banderita = false;
-                for (Horario horario : coordinador.getHorario_semestre()) {
+                for (Horario horario : horario_semestre) {
                     if (curso.getSemestre() == horario.getSemestre()) {
                         banderita = true;
                         for(Dia dia : horario.getDias()){
@@ -80,32 +94,53 @@ public class Coordinador extends Persona {
                 if(!banderita){
                     Horario horariosem = new Horario(profe.getNombre(),curso.getSemestre());
                     horario_semestre.add(horariosem);
+                    for(Horario ho:horario_semestre){
+                        if(curso.getSemestre()==ho.getSemestre()){
+                            for(Dia di:ho.getDias()){
+                                if(di.getNombre_dia().equals(nombre_dia)){
+                                    di.anadir_cursos_dia(di,curso, profe.getNombre(),GlobalResources.getListaAulas(),coordinador);
+
+                                }
+                            }
+                        }
+                    }
+
+
                 }
             }
         }
     }
-    public boolean revision_similitud(LinkedList<Horario> horarios, int horas, LinkedList<String> espacios) {
+    public boolean revision_similitud(LinkedList<Horario> horarios, int horas, LinkedList<String> espacios, Dia di) {
         int horas_globales = horas;
         boolean bandero = false;
         for (Horario horario : horarios) {
             for (Dia dia : horario.getDias()) {
-                ListIterator<Bloque> iterator = dia.getBloques().listIterator();
-                while (iterator.hasNext() && horas_globales > 0) {
-                    Bloque bloque = iterator.next();
-                    if (espacios.contains(bloque.getEspacio())) {
-                        if (bloque.getAula().getDisponibilidad()) {
-                            bandero = true;
-                            horas_globales--;
-                        }
-                        else{
-                            bandero = false;
-                            horas_globales--;
+                if(dia.getNombre_dia().equals(di.getNombre_dia())) {
+                    ListIterator<Bloque> iterator = dia.getBloques().listIterator();
+                    while (iterator.hasNext() && horas_globales > 0) {
+                        Bloque bloque = iterator.next();
+                        if (espacios.contains(bloque.getEspacio())) {
+                            //no existe aula?
+                        /*El problema es que abajo busca el aula para obtener su disponibilidad
+                        pero no existe ningun aula en ese bloque, o que si no hay aula asignada,
+                        significa que esta disponible y si estuviera asignada pues obviamente no esta disponible.
+                         */
+                            if (bloque.getAula() == null) { //aqui
+                                bandero = true;
+                                horas_globales--;
+                            } else if (bloque.getAula().getDisponibilidad()) {
+                                bandero = true;
+                                horas_globales--;
+                            } else {
+                                bandero = false;
+                                horas_globales--;
+
+                            }
 
                         }
+
 
                     }
-
-
                 }
             }
 
@@ -117,11 +152,20 @@ public class Coordinador extends Persona {
             System.out.println("Vacio");
         }
         for(Horario horario:horario_semestre){
-            System.out.println("prs1");
             System.out.println("Horario semestre: "+horario.getSemestre());
             System.out.println("------------------------------------------");
-            System.out.println("prs2");
-            horario.printHorario();
+            for (Dia dia: horario.getDias()) {
+                System.out.println("Día: " + dia.getNombre_dia());
+                for (Bloque bloque : dia.getBloques()) {
+                    System.out.print("  - Espacio: " + bloque.getEspacio());
+                    System.out.print(" - Disponibilidad: " + (bloque.getDisponibilidad() ? "Disponible" : "No disponible"));
+                    if (bloque.getCurso() != null) { //aqui es el problema me retorna null el curso
+                        System.out.println(" - Curso: " + bloque.getCurso().getNombre_asig()+" - Profesor: "+bloque.getProfe());
+                    } else {
+                        System.out.println();
+                    }
+                }
+            }
         }
 
     }

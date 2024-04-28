@@ -4,14 +4,14 @@ public class Aula {
     private int capacidad;
     private String ubicacion;
     private Departamento departamento;
-    private Boolean disponibilidad = true;
+    private Boolean disponibilidad;
 
     public Aula(String nombre, int numero_aula, int capacidad, String ubicacion) {
         this.nombre = nombre;
         this.numero_aula = numero_aula;
         this.capacidad = capacidad;
         this.ubicacion = ubicacion;
-        this.disponibilidad = disponibilidad;
+        this.disponibilidad = true;
         this.departamento = departamento;
     }
 

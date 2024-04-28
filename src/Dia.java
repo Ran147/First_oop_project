@@ -18,12 +18,12 @@ public class Dia {
         bloques.add(new Bloque("9:30-10:20",true));
         bloques.add(new Bloque("10:30-11:20",true));
         bloques.add(new Bloque("11:30-12:20",false));
-        bloques.add(new Bloque("12:30-12:50",false));
+        bloques.add(new Bloque("12:30-12:50",true));
         bloques.add(new Bloque("13:00-13:50",true));
         bloques.add(new Bloque("14:00-14:50",true));
         bloques.add(new Bloque("15:00-15:50",true));
         bloques.add(new Bloque("16:00-16:50",true));
-        bloques.add(new Bloque("17:00-17:50",true));
+        bloques.add(new Bloque("17:00-17:50",false));
         bloques.add(new Bloque("18:00-18:50",true));
         bloques.add(new Bloque("19:00-19:50",true));
         bloques.add(new Bloque("20:00-20:50",true));
@@ -38,17 +38,23 @@ public class Dia {
     public boolean anadir_cursos_dia(Dia dia, Asignatura asig,String profe,LinkedList<Aula> aulas, Coordinador coordinador){
         //agregar lo de disponibilidad del aula
         int horas = asig.cantidad_horas();
+        System.out.println(horas+" aqui");
         boolean bandera = false;
         LinkedList<String> envio = verificar(horas,dia,aulas,asig);
+        System.out.println(horas+"aquis");//despues
         ListIterator<Bloque> iterator = dia.getBloques().listIterator();
         Bloque blockfinal = dia.getBloques().getLast();
         while (iterator.hasNext() && horas > 0) {
+            System.out.println(horas+"is");
             Bloque bloque = iterator.next();
             if(bloque.getDisponibilidad()){
                 for(Aula aula:aulas) {
                     //ya se puede hacer la validacion con la funcion de horario,
                     //solo es de llamarla aca abajo
-                    if (coordinador.revision_similitud(coordinador.getHorario_semestre(),horas,envio)) {
+                    System.out.println("Entra en 51");
+                    if (coordinador.revision_similitud(coordinador.getHorario_semestre(),horas,envio,dia)) {
+                        System.out.println("hORAS:"+horas);
+                        System.out.println("Entra en 52");
                         if (asig instanceof Asignatura_Practica && aula instanceof Aula_Practica) {
                             // Add the course to the current block
                             bloque.setCurso(asig);

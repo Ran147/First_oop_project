@@ -30,7 +30,7 @@ public class Horario {
             for (Bloque bloque : dia.getBloques()) {
                 System.out.print("  - Espacio: " + bloque.getEspacio());
                 System.out.print(" - Disponibilidad: " + (bloque.getDisponibilidad() ? "Disponible" : "No disponible"));
-                if (bloque.getCurso() != null) {
+                if (bloque.getCurso() != null) { //aqui es el problema me retorna null el curso
                     System.out.println(" - Curso: " + bloque.getCurso().getNombre_asig());
                 } else {
                     System.out.println();

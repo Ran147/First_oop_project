@@ -28,7 +28,7 @@ public class Main {
         GlobalResources.addAsignatura(new Asignatura_Teorica("Calculo Diferencial", 3, departamento1, 2,"Online"));
         GlobalResources.addAsignatura(new Asignatura_Teorica("Estadística", 2, departamento1, 4,"tec digital"));
         GlobalResources.addAsignatura(new Asignatura_Practica("Redes", 4, departamento, 6,"Routers y Switches", "Linux"));
-        GlobalResources.addAsignatura(new Asignatura_Practica("Base de Datos", 3, departamento, 3,"SQL Servers", "Windows"));
+        GlobalResources.addAsignatura(new Asignatura_Practica("Base de Datos", 4, departamento, 3,"SQL Servers", "Windows"));
         //Aulas--------------------------------------------------------------------
         GlobalResources.addAula(new Aula_Teorica("Aula 101", 101, 30, "Edificio A", true, true));
         GlobalResources.addAula(new Aula_Practica("Laboratorio 12", 12, 20, "Edificio B", 15, "PCs"));
@@ -42,6 +42,7 @@ public class Main {
         listasE.anadir_Estudiantes("Mathew", 229392);
         listasE.anadir_Estudiantes("Tinkyweed", 11292);
         Menu.displaymenu(coordinador,listasE);
+        //revisar print de horario de coordinador
 
     }
 }
