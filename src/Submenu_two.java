@@ -18,20 +18,39 @@ public class Submenu_two {
                     int semestre_numero = scanner.nextInt();
                     scanner.nextLine();
                     coordinador.encontrarprofesor_semestre(semestre_numero);
-                    for(Profesor profesor:coordinador.getListaprofesoresS2()){ //numero de semestre
-                        for(Dia dia : profesor.getHorario_prof().getDias()){
-                            if(!dia.getCursitos().isEmpty()) {
-                                String nombre_dia = dia.getNombre_dia();
-                                LinkedList<Asignatura> cursos_del_dia = dia.getCursitos();
-                                Profesor profesor_del_dia = profesor;
-                                coordinador.acomodar_horario(nombre_dia,cursos_del_dia,profesor_del_dia, coordinador);
+                    if(semestre_numero==2) {
+                        for (Profesor profesor : coordinador.getListaprofesoresS2()) { //numero de semestre
+                            for (Dia dia : profesor.getHorario_prof().getDias()) {
+                                if (!dia.getCursitos().isEmpty()) {
+                                    String nombre_dia = dia.getNombre_dia();
+                                    LinkedList<Asignatura> cursos_del_dia = dia.getCursitos();
+                                    Profesor profesor_del_dia = profesor;
+
+                                    coordinador.acomodar_horario(nombre_dia, cursos_del_dia, profesor_del_dia, coordinador);
 
                                 }
 
                             }
                         }
+                    }
+                    else{
+                        for (Profesor profesor : coordinador.getListaprofesoresS1()) { //numero de semestre
+                            for (Dia dia : profesor.getHorario_prof().getDias()) {
+                                if (!dia.getCursitos().isEmpty()) {
+                                    String nombre_dia = dia.getNombre_dia();
+                                    LinkedList<Asignatura> cursos_del_dia = dia.getCursitos();
+                                    Profesor profesor_del_dia = profesor;
+                                    coordinador.acomodar_horario(nombre_dia, cursos_del_dia, profesor_del_dia, coordinador);
+
+                                }
+
+                            }
+                        }
+
+                    }
                     //ya tendria divididos los profesores que dan cursos de semestre 1 y 2 pero tiene que ser en pares e impares
-                    break;
+
+            break;
                 case 2:
                     System.out.println("Buscando semestres.... ");
                     coordinador.ver_horario();
